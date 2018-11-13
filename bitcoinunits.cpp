@@ -19,18 +19,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(GST);
-    unitlist.append(mGST);
-    unitlist.append(uGST);
+    unitlist.append(PIV);
+    unitlist.append(mPIV);
+    unitlist.append(uPIV);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case GST:
-    case mGST:
-    case uGST:
+    case PIV:
+    case mPIV:
+    case uPIV:
         return true;
     default:
         return false;
@@ -40,12 +40,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case GST:
-        return QString("GHOST");
-    case mGST:
-        return QString("mGHOST");
-    case uGST:
-        return QString::fromUtf8("uGHOST");
+    case PIV:
+        return QString("pivx");
+    case mPIV:
+        return QString("mpivx");
+    case uPIV:
+        return QString::fromUtf8("upivx");
     default:
         return QString("???");
     }
@@ -55,23 +55,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case GST:
-            return QString("GST");
-        case mGST:
-            return QString("mGST");
-        case uGST:
-            return QString::fromUtf8("μGST");
+        case PIV:
+            return QString("PIV");
+        case mPIV:
+            return QString("mPIV");
+        case uPIV:
+            return QString::fromUtf8("μPIV");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case GST:
-            return QString("tGST");
-        case mGST:
-            return QString("mtGST");
-        case uGST:
-            return QString::fromUtf8("μtGST");
+        case PIV:
+            return QString("tPIV");
+        case mPIV:
+            return QString("mtPIV");
+        case uPIV:
+            return QString::fromUtf8("μtPIV");
         default:
             return QString("???");
         }
@@ -82,23 +82,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case GST:
-            return QString("GST");
-        case mGST:
-            return QString("Milli-GST (1 / 1" THIN_SP_UTF8 "000)");
-        case uGST:
-            return QString("Micro-GST (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case PIV:
+            return QString("PIV");
+        case mPIV:
+            return QString("Milli-PIV (1 / 1" THIN_SP_UTF8 "000)");
+        case uPIV:
+            return QString("Micro-PIV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case GST:
-            return QString("TestGSTs");
-        case mGST:
-            return QString("Milli-TestGST (1 / 1" THIN_SP_UTF8 "000)");
-        case uGST:
-            return QString("Micro-TestGST (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case PIV:
+            return QString("TestPIVs");
+        case mPIV:
+            return QString("Milli-TestPIV (1 / 1" THIN_SP_UTF8 "000)");
+        case uPIV:
+            return QString("Micro-TestPIV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -108,11 +108,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case GST:
+    case PIV:
         return 100000000;
-    case mGST:
+    case mPIV:
         return 100000;
-    case uGST:
+    case uPIV:
         return 100;
     default:
         return 100000000;
@@ -122,11 +122,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case GST:
+    case PIV:
         return 8;
-    case mGST:
+    case mPIV:
         return 5;
-    case uGST:
+    case uPIV:
         return 2;
     default:
         return 0;
